@@ -13,6 +13,8 @@ STATE = {"value": 0}
 
 CLIENTS = set()
 
+MESSAGE = "undefined"
+
 
 async def notify_direction(message):
     if CLIENTS:  # asyncio.wait doesn't accept an empty list
@@ -36,8 +38,8 @@ async def handler(websocket, path):
         async for message in websocket:
             data = json.loads(message)
             if data["client"] == "camera":
+                print("I will send dat to the robot ", data["message"])
                 await notify_direction(data["message"])
-                print(data["message"])
             else:
                 logging.error("unsupported event: {}", data)
     finally:
@@ -46,5 +48,6 @@ async def handler(websocket, path):
 
 start_server = websockets.serve(handler, "localhost", 6789)
 
+asyncio.get_event_loop().set_debug(True)
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

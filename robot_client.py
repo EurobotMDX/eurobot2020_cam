@@ -6,17 +6,18 @@ import asyncio
 import websockets
 import json
 import time
-# import camera_service.py
 
 SERVER_URI = "ws://localhost:6789"
 POLAR_DIRECTION = ""
 
 async def run_robot_client():
+    POLAR_DIRECTION = ""
     print("Starting robot client...")
     async with websockets.connect(SERVER_URI) as websocket:
-        while True:
+        while POLAR_DIRECTION == "":
             # {"sender":"server", "message":"N"}
             data = await websocket.recv()
+
             message = json.loads(data)
             print(data)
             if(message["sender"] == "server"):
