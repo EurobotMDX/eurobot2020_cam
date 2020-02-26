@@ -32,7 +32,7 @@ async def handler(websocket, path):
     print("Starting Server ...")
     await register(websocket)
     try:
-        # {"sender":"camera", "message":"hello"}
+        # {"sender":"camera", "message":"N"}
         async for message in websocket:
             data = json.loads(message)
             if data["client"] == "camera":

@@ -11,8 +11,8 @@ def testside(image, cropy, cropx):
 
     image = image[startRow:endRow, startCol:endCol]
 
-    top = image[0:image.shape[0]/2]
-    bottom = image[image.shape[0]/2:image.shape[0]]
+    top = image[0:image.shape[0]//2]
+    bottom = image[image.shape[0]//2:image.shape[0]]
 
     topval = cv2.mean(top)
     bottomval = cv2.mean(bottom)
