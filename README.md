@@ -19,21 +19,12 @@ pip install -r requirements.txt
 
 ## Start
 
-On three different terminals
 ```
-python3 server.py
-```
-```
-python3 camera_client.py
-```
-```
-python3 robot_client.py
+start-camera-websocket.sh
 ```
 
 ## To Do
 
-Make the camera work with the current code.
-Current issue may be dued to the install dependancy of opencv.
-
+Check that works in odroid environment
 Maybe: add some security check what client are trying to connect to the server.
 Maybe hard code keys for each client that will then be checked by the server.
